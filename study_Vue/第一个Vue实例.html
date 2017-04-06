@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>第一个Vue实例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">div_app:&nbsp;&nbsp;    {{msg}}</div>    
+		<!-- Vue.js有多种数据绑定的语法，最基础的形式是文本插值，使用一对大括号语法。
+			在运行时{{msg}}会被数据对象的msg属性替换，所以页面上会输出"Hello Vue!"-->
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			msg:'Hello Vue!'
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					//指向View，表示该Vue实例将挂载到<div id="app">...</div>这个元素
+			data:modelData				//指向Model，表示我们的Model是modelData对象
+		});
+	</script>
+</html>
