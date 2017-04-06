@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>v-for示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Sex</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="person in persons">
+						<td>{{person.name}}</td>
+						<td>{{person.age}}</td>
+						<td>{{person.sex}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>    
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			persons:[
+				{name:'小李',age:20,sex:'男'},
+				{name:'小张',age:21,sex:'男'},
+				{name:'小王',age:19,sex:'男'},
+				{name:'小丽',age:20,sex:'女'}
+			]
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData
+		});
+
+	</script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>v-else示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<h2 v-if="index == 1">index == 1</h2>
+			<h2 v-else>index != 1</h2>
+			<h2>-----------!------------</h2>
+			<h2 v-if="index == 1">index == 1</h2>
+			<h2 v-else-if="index == 2">index == 2</h2>
+			<h2 v-else>index != 1 & index != 2</h2>
+			<input type="text" v-model="index"/><br/>		 <!-- 使用v-model指令实现双向绑定修改Model数据内的值-->
+		</div>    
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			index:1
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData
+		});
+
+	</script>
+</html>

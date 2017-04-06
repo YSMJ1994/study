@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>v-show示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<h2 v-show="flag">h2: {{flag}}</h2>						<!-- 设置为yes变量，来源modelData-->
+			<input type="text" v-model="flag"/><br/>		 <!-- 使用v-model指令实现双向绑定修改Model数据内的值-->
+		</div>    
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			flag:true
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData
+		});
+
+	</script>
+</html>

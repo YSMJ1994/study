@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>v-bind示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+		<style>
+			.red{
+				color:red;
+			}
+			.blue{
+				color:blue;
+			}
+			.border-bottom-red{
+				border-bottom:1px solid red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<!-- 为href属性设值-->
+			<a v-bind:href="'https://www.baidu.' + src" target="_Blank">百度</a><br/>
+			<!-- 缩写方式为href属性设值-->
+			<a :href="'https://www.baidu.' + src" target="_Blank">百度</a><br/>
+			<!-- class绑定-->
+			<h2 :class="red">Hello Vue!</h2><br/>
+			<h2 :class="blue">Hello Vue!</h2><br/>
+			<h2 :class="border1">Hello Vue!</h2><br/>
+			<h2 :class="[blue,border1]">Hello Vue!</h2><br/>
+			<h2 :class="isRed == true?red:blue">Hello Vue!</h2><br/>
+			<input type="text" v-model="flag1" />
+			<h2 :class="{red:flag1==1?true:false}">Hello Vue!</h2><br/>
+			<input type="text" v-model="flag2" />
+			<h2 :class="[{red:flag2==1?true:false},{blue:flag2==2?true:false}]">Hello Vue!</h2><br/>
+			<!-- style绑定-->
+			<input type="text" v-model="size" />
+			<h2 :style="{fontSize:size + 'px'}">Hello Vue!</h2><br/>
+			<h2 :style="[{fontSize:size + 'px'},{color:blue}]">Hello Vue!</h2><br/>
+			<!-- 绑定一个对象-->
+			<h2 v-bind="{id:red,'other-attr':'attr'}">Hello Vue!</h2><br/>
+			
+		</div>
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			src:'com',
+			red:'red',
+			blue:'blue',
+			border1:'border-bottom-red',
+			isRed:true,
+			flag1:1,
+			flag2:1,
+			fontSize:'font-size',
+			size:20,
+			color:'color'
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData
+		});
+
+	</script>
+</html>

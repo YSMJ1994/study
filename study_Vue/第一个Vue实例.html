@@ -6,9 +6,13 @@
 	</head>
 	<body>
 		<!-- View视图展现-->
-		<div id="app">div_app:&nbsp;&nbsp;    {{msg}}</div>    
+		<div id="app">
+			<span>div_app:&nbsp;&nbsp;    {{msg}}</span>
+			<input type="button" value="method1" onclick="runMethod1()"/>
+		</div>    
 		<!-- Vue.js有多种数据绑定的语法，最基础的形式是文本插值，使用一对大括号语法。
 			在运行时{{msg}}会被数据对象的msg属性替换，所以页面上会输出"Hello Vue!"-->
+		
 	</body>
 	<script>
 		//Model模型数据
@@ -19,7 +23,18 @@
 		//ViewModel Vue实例或"VielModel" 连接View和Model
 		var vm = new Vue({
 			el:'#app',					//指向View，表示该Vue实例将挂载到<div id="app">...</div>这个元素
-			data:modelData				//指向Model，表示我们的Model是modelData对象
+			data:modelData,				//指向Model，表示我们的Model是modelData对象
+			methods:{
+				method1:function(){
+					this.msg='Hello method1!';
+				}
+			}
 		});
+		
+		//可以使用数组push()往data里添加数据
+		
+		function runMethod1(){
+			vm.method1();
+		}
 	</script>
 </html>

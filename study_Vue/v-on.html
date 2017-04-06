@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>v-on示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+		<style>
+			#app *{
+				margin-bottom:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<input type="text" v-model="message" /><br/>
+			
+			<!-- click事件绑定一个方法-->
+			<button v-on:click="method1">绑定方法</button><br/>
+			<!-- 缩写-->
+			<button @click="method1">绑定方法(缩写)</button><br/>
+			<!-- click事件使用内联语句-->
+			<button @click="method2('Hi')">内联语句</button><br/>
+			
+		</div>
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			message:'Hello Vue!'
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData,
+			methods:{
+				method1:function() {
+					alert("method1:" + this.message);
+				},
+				method2:function(msg) {
+					alert("method2:" + msg);
+				}
+			}
+		});
+
+	</script>
+</html>

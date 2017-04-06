@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>v-if示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<h2 v-if="true">true!</h2>						<!-- 直接设置一个bool值为true-->	
+			<h2 v-if="false">false!</h2>					<!-- 直接设置一个bool值为false-->
+			<h2 v-if="yes">1.Yes!</h2>						<!-- 设置为yes变量，来源modelData-->
+			<h2 v-if="no">2.No!</h2>							<!-- 设置为no变量，来源modelData-->
+			<h2 v-if="age >= 20">3.Age:{{age}}</h2>			<!-- 设置为一个bool运算式-->
+			<h2 v-if="name.length + 1 > 4">4.Name:{{name}}</h2>	<!-- 设置为一个bool运算式-->
+			<span style="margin-right:10px;">1.Yes</span>
+			<input type="text" v-model="yes"/><br/>		 <!-- 使用v-model指令实现双向绑定修改Model数据内的值-->
+			<span style="margin-right:10px;">2.No</span>
+			<input type="text" v-model="no"/><br/>		 <!-- 使用v-model指令实现双向绑定修改Model数据内的值-->
+			<span style="margin-right:10px;">3.age >= 20?</span>
+			<input type="text" v-model="age"/><br/>		 <!-- 使用v-model指令实现双向绑定修改Model数据内的值-->
+			<span style="margin-right:10px;">4.name.length + 1 > 4?</span>
+			<input type="text" v-model="name"/><br/>	 <!-- 使用v-model指令实现双向绑定修改Model数据内的值-->
+		</div>    
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			yes:true,
+			no:false,
+			age:10,
+			name:'jack'
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData
+		});
+		
+		//在上面使用了v-model指令对数据进行了修改，这里直接对数据进行修改
+		//modelData.age=20;		//直接对模型数据进行修改因为引用传递和双向绑定，故而修改了DOM元素
+		//vm.name="Tom";			//这里Vue实例为什么能直接访问和修改模型数据呢？是因为每个Vue实例都会代理其选项对象里的data属性。
+	</script>
+</html>

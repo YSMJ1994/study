@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Vue双向绑定示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<!-- 在Vue.js中可以使用v-model指令在表单元素上创建双向数据绑定。-->
+		<div id="app">
+			<h2>{{msg}}</h2>
+	
+			<input type="text" v-model="msg"/>
+		</div>    
+		
+		<!-- 将msg绑定到文本框，当修改文本框的值时,msg的值会被更新，<h2></h2>标签内的值也会被修改-->
+		<!-- 反过来，如果改变msg的值，文本框的值也会被更新。-->
+	</body>
+	<script>
+		//Model模型数据
+		var modelData = {
+			msg:'Hello Vue!'
+		};
+		
+		//ViewModel Vue实例或"VielModel" 连接View和Model
+		var vm = new Vue({
+			el:'#app',					
+			data:modelData				//指向Model，表示我们的Model是modelData对象
+			//data属性指向modelData，它是一个引用类型，改变了modelData对象的属性，同时也会影响Vue实例的data属性。
+		});
+	</script>
+</html>
