@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Vue自定义全局组件示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			app:<my-component></my-component>
+		</div>
+		<div id="app2">
+			app2:<my-component></my-component>
+		</div>    
+	</body>
+	<script>
+		//要注册一个全局组件，你可以使用 Vue.component(tagName, options)
+		//	Vue.component('my-Component',{
+				//选项
+		//	});
+		//对于自定义标签名tagName不强制要求遵循w3c规则（小写，并且包含一个短杠），尽管遵循这个规则比较好
+		
+		//组件在注册之后，便可以在父实例的模块中以自定义元素 <my-component></my-component> 的形式使用。
+		
+		//要确保在初始化根实例之前注册了组件
+		
+		//注册一个全局组件
+		Vue.component('my-component',{
+			template:'<div>my-Component div!</div>'
+		});
+		
+		//创建根实例
+		var vm = new Vue({
+			el:'#app'
+		});
+		
+		var vm2 = new Vue({
+			el:'#app2'
+		});
+	</script>
+</html>

@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Vue自定义组件data选项限制</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<my-component></my-component><br/>
+			<my-component></my-component><br/>
+			<my-component></my-component><br/>
+		</div>
+	</body>
+	<script>
+		//定义DOM模板
+		//通过Vue构造器传入的各种选项大多数都可以在组件里用。 data 是一个例外，它必须是函数。实际上，如果你这么做：
+		 /*
+		var child = {
+			template:'<button v-on:click="counter += 1">{{ counter }}</button>',
+			data:{
+				counter:0
+			}
+		};
+		
+		//创建全局组件
+		Vue.component('my-component',child);
+		
+		//创建根实例
+		var vm = new Vue({
+			el:'#app'
+		});
+		 */
+		//那么 Vue 会停止，并在控制台发出警告，告诉你在组件中 data 必须是一个函数。
+		
+		//假设我们将data定义为一个函数，绕过Vue的检测，看会发生什么，了解为什么Vue会这么做
+		
+		
+		
+		 /*
+		var data = {
+			counter:0
+		}
+		var child = {
+			template:'<button v-on:click="counter += 1">{{ counter }}</button>',
+			data:function() {
+				return data;
+			}
+		};
+		
+		//创建全局组件
+		Vue.component('my-component',child);
+		
+		//创建根实例
+		var vm = new Vue({
+			el:'#app'
+		});
+		
+		//我们通过浏览器修改data的msg值发现三个组件共享了同一个data，修改一个 data 会影响所有组件。
+		//我们可以通过为每个组件返回全新的 data 对象来解决这个问题：
+		 */
+		
+		
+		
+		//  /*
+		var child = {
+			template:'<button v-on:click="counter += 1">{{ counter }}</button>',
+			data:function() {
+				return {
+					counter:0
+				};
+			}
+		};
+		
+		//创建全局组件
+		Vue.component('my-component',child);
+		
+		//创建根实例
+		var vm = new Vue({
+			el:'#app'
+		});
+		//  */
+	</script>
+</html>

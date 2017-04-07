@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Vue自定义组件DOM模板示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<!-- 	通过浏览器我们发现这里的自定义标签没有被渲染进来，那是因为 Vue 只有在浏览器解析和标准化 HTML 后才能获取模版内容。
+			尤其像这些元素 <ul> ， <ol>， <table> ， <select> 限制了能被它包裹的元素。
+		-->
+		<span>app:</span>
+		<table id="app">
+			<my-component></my-component>
+		</table>
+		<!--  使用特殊的 is 属性,使自定义组件能够被渲染-->
+		<span>app2:</span>
+		<table id="app2">
+			<tr is="my-component"></tr>
+		</table>    
+	</body>
+	<script>
+		//定义DOM模板
+		var child = {
+			template:'<div>my-component div!</div>'
+		};
+		
+		//创建全局组件
+		Vue.component('my-component',child);
+		
+		//创建根实例
+		var vm = new Vue({
+			el:'#app'
+		});
+		var vm2 = new Vue({
+			el:'#app2'
+		});
+		
+		/*应当注意，如果您使用来自以下来源之一的字符串模板，这些限制将不适用：
+			<script type="text/x-template">
+			JavaScript内联模版字符串
+			.vue 组件
+		因此，有必要的话请使用字符串模版。*/
+	</script>
+</html>

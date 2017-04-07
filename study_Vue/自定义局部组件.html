@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Vue自定义局部组件示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<my-component1></my-component1>
+			<my-component2></my-component2>
+		</div>    
+		<my-component2></my-component2>
+	</body>
+	<script>
+		var child = {
+			template:'<div>my-component2 div!</div>'
+		}
+		//创建根实例,不同于创建全局组件，局部组件仅在实例/组件的作用域中可用
+		var vm = new Vue({
+			el:'#app',
+			components:{
+				'my-component1':{template:'<div>my-component1 div!</div>'},
+				'my-component2':child
+			}
+		});
+		
+		//这种封装也适用于其它可注册的 Vue 功能，如指令。
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>Prop传递数据</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<my-component1></my-component1><br/>
+			<my-component2 :msg="msg"></my-component2><br/>		//使用v-bind为该自定义标签设置特性，用于传递给其内的子模板
+		</div>
+	</body>
+	<script>
+		//创建根实例和局部组件
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'app-Msg'
+			},
+			components:{
+				//第一个模板，尝试直接获取模板内和模板外的数据，只能访问到该模板内定义的spanMsg，而模板外的msg则报错
+				'my-component1':{
+					template:'<span>{{msg}}  ----  {{spanMsg}}</span>',
+					data:function(){
+						return {spanMsg:'span-Msg'};
+					}
+				},
+				//第二个模板,显式地用props选项声明它期待获得的数据
+				'my-component2':{
+					props:['msg'],
+					template:'<span>{{msg}}  ----  {{spanMsg}}</span>',
+					data:function(){
+						return {spanMsg:'span-Msg'};
+					}
+				}
+			}
+		});
+	</script>
+</html>
