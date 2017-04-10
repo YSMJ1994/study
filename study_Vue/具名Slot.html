@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>具名Slot</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<my-component>
+				  <h1 slot="aaa">这里可能是一个页面标题</h1>
+				  <p>主要内容的一个段落。</p>
+				  <p>另一个主要段落。</p>
+				  <p slot="footer">这里有一些联系信息</p>
+			</my-component>		
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			components:{
+				'my-component':{
+					template:	'<div class="container">\
+								  <header>\
+									<slot name="aaa"></slot>\
+								  </header>\
+								  <main>\
+									<slot></slot>\
+								  </main>\
+								  <footer>\
+									<slot name="footer"></slot>\
+								  </footer>\
+								</div>'
+				}
+			}
+		});
+	</script>
+</html>

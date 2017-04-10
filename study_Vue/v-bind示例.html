@@ -30,9 +30,9 @@
 			<h2 :class="[blue,border1]">Hello Vue!</h2><br/>
 			<h2 :class="isRed == true?red:blue">Hello Vue!</h2><br/>
 			<input type="text" v-model="flag1" />
-			<h2 :class="{red:flag1==1?true:false}">Hello Vue!</h2><br/>
+			<h2 :class="{red:flag1==1?true:false}">Hello Vueflag1!</h2><br/>
 			<input type="text" v-model="flag2" />
-			<h2 :class="[{red:flag2==1?true:false},{blue:flag2==2?true:false}]">Hello Vue!</h2><br/>
+			<h2 :class="[{red:flag2==1?true:false},{blue:flag2==2?true:false}]">Hello Vue123!</h2><br/>
 			<!-- style绑定-->
 			<input type="text" v-model="size" />
 			<h2 :style="{fontSize:size + 'px'}">Hello Vue!</h2><br/>
@@ -50,8 +50,8 @@
 			blue:'blue',
 			border1:'border-bottom-red',
 			isRed:true,
-			flag1:1,
-			flag2:1,
+			flag1:2,
+			flag2:2,
 			fontSize:'font-size',
 			size:20,
 			color:'color'

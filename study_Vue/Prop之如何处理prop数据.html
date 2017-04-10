@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Prop之如何处理prop数据</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<my-component1 :msg="msg121"></my-component1><br/>
+			<input type="text" v-model="msg121"/>
+			<input type="text" v-model="msg121"/>
+		</div>
+	</body>
+	<script>
+		//创建根实例和局部组件
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg121:'    app-         Msg    '
+			},
+			components:{
+				'my-component1':{
+					props:['msg'],
+					template:'<span :id="handle1()">--------{{msg}}---------{{spanMsg}}</span>',
+					data:function(){
+						return {spanMsg:'span-Msg',
+								newmsg:this.msg
+						};
+					},
+					methods:{
+						handle1:function() {
+							this.msg="111";
+							return this.newmsg;
+						}
+					}
+				}
+			}
+		});
+	</script>
+</html>

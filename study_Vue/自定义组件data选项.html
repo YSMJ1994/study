@@ -17,7 +17,7 @@
 		//通过Vue构造器传入的各种选项大多数都可以在组件里用。 data 是一个例外，它必须是函数。实际上，如果你这么做：
 		 /*
 		var child = {
-			template:'<button v-on:click="counter += 1">{{ counter }}</button>',
+			template:'<button @click="counter += 1">{{ counter }}</button>',
 			data:{
 				counter:0
 			}

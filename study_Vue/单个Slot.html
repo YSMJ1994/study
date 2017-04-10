@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>单个Slot</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<father>
+				<child>
+					<p>这是一些初始内容</p>
+					<p>这是更多的初始内容</p>
+				</child>
+			</father>		
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			components:{
+				'father':{
+					template:	'<div>\
+								  <h1>我是父组件的标题</h1>\
+								  <slot>\
+									只有在没有要分发的内容时才会显示。\
+								  </slot>\
+								</div>'
+				},
+				'child':{
+					template:	'<div>\
+								  <h2>我是子组件的标题</h2>\
+								  <slot>\
+									只有在没有要分发的内容时才会显示。\
+								  </slot>\
+								</div>'
+				}
+			}
+		});
+	</script>
+</html>

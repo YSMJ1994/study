@@ -16,10 +16,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="person in persons">
-						<td>{{person.name}}</td>
-						<td>{{person.age}}</td>
-						<td>{{person.sex}}</td>
+					<tr v-for="(val,key,index) in persons">
+						<td>{{index}}.{{val}}</td>
+						<td>{{val}}</td>
+						<td>{{val}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -34,6 +34,7 @@
 				{name:'小王',age:19,sex:'男'},
 				{name:'小丽',age:20,sex:'女'}
 			]
+			
 		};
 		
 		//ViewModel Vue实例或"VielModel" 连接View和Model

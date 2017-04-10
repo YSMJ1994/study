@@ -8,7 +8,8 @@
 		<!-- View视图展现-->
 		<div id="app">
 			<my-component1></my-component1><br/>
-			<my-component2 :msg="msg"></my-component2><br/>		//使用v-bind为该自定义标签设置特性，用于传递给其内的子模板
+			<my-component2 :msg="msg"></my-component2><br/>		
+			<!--使用v-bind为该自定义标签设置特性，用于传递给其内的子模板-->
 		</div>
 	</body>
 	<script>
@@ -28,7 +29,7 @@
 				},
 				//第二个模板,显式地用props选项声明它期待获得的数据
 				'my-component2':{
-					props:['msg'],
+					props:['msg1'],
 					template:'<span>{{msg}}  ----  {{spanMsg}}</span>',
 					data:function(){
 						return {spanMsg:'span-Msg'};

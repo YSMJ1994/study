@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>非父子间组件通信</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<button-counter1></button-counter1>
+			<button-counter2></button-counter2>
+		</div>
+	</body>
+	<script>
+		//创建根实例和局部组件
+		var bus = new Vue();								//事件总线
+		var vm = new Vue({
+			el:'#app',
+			components:{
+				'button-counter1':{
+					template:'<button v-on:click="childMethod">{{ counter }}</button>',
+					data:function(){
+						return {
+							counter:0
+						};
+					},
+					created: function() {					//在该button1创建的钩子中使用事件总线的监听button2事件
+						bus.$on('button2',function(){
+							this.counter++;
+						}.bind(this));
+					},
+					methods:{
+						childMethod:function() {
+							this.counter++;
+							bus.$emit('button1');			//向事件总线发送button1事件
+						}
+					}
+				},
+				'button-counter2':{
+					template:'<button v-on:click="childMethod">{{ counter }}</button>',
+					data:function(){
+						return {
+							counter:0
+						};
+					},
+					created: function() {					//在该button2创建的钩子中使用事件总线的监听button1事件
+						bus.$on('button1',function(){
+							this.counter++;
+						}.bind(this));
+					},
+					methods:{
+						childMethod:function() {
+							this.counter++;
+							bus.$emit('button2');			//向事件总线发送button2事件
+						}
+					}
+				}
+			}
+		});
+	</script>
+</html>

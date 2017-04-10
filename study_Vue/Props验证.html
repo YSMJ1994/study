@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Props验证</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<my-component1 :msg="msg"></my-component1><br/>
+		</div>
+	</body>
+	<script>
+		//创建根实例和局部组件
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'    app-         Msg    '
+			},
+			components:{
+				'my-component1':{
+					props:{
+						msg:{
+							type:Number,						//类型验证String,Number,Boolean,Function,Object,Array
+							default:0,							//默认值
+							required:true,						//是否必传
+							validator:function (value) {		//自定义验证函数
+								return value >= 0
+							}
+						}
+						/*,
+						// 基础类型检测 （`null` 意思是任何类型都可以）
+						propA: Number,
+						// 多种类型
+						propB: [String, Number],
+						// 必传且是字符串
+						propC: {
+						  type: String,
+						  required: false
+						},
+						// 数字，有默认值
+						propD: {
+						  type: Number,
+						  default: 100
+						},
+						// 数组／对象的默认值应当由一个工厂函数返回
+						propE: {
+						  type: Object,
+						  default: function () {
+							return { message: 'hello' }
+						  }
+						},
+						// 自定义验证函数
+						propF: {
+						  validator: function (value) {
+							return value > 10
+						  }
+						}*/
+					},
+					template:'<span :id="handle1()">--------{{msg}}---------{{spanMsg}}</span>',
+					data:function(){
+						return {spanMsg:'span-Msg',
+								newmsg:this.msg
+						};
+					},
+					methods:{
+						handle1:function() {
+							return this.newmsg;
+						}
+					}
+				}
+			}
+		});
+	</script>
+</html>
