@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>作用域插槽列表组件</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<div class="parent">
+				<my-component :items="items">
+					<template slot="li" scope="props">
+						<li >{{props.index+1}}.{{props.msg}}</li>
+					</template>
+				</my-component>
+				<my-component2 :items="items">
+					<template slot="li" scope="props">
+						<li v-for="(item,index) in props.items">{{index+1}}.{{item}}</li>
+					</template>
+				</my-component2>
+			</div>
+		</div>
+	</body>
+	<script>
+		var myComponent = {
+			props:{
+				items:	{
+							type:Array,													
+							required:true					
+						}
+			},
+			data:function(){
+				return {myitems:this.items};
+			},
+			template:	'<ul class="child">\
+							<slot name="li" v-for="(item,index) in myitems" :msg="item" :index="index"></slot>\
+						</ul>'
+		};
+		var myComponent2 = {
+			props:{
+				items:	{
+							type:Array,													
+							required:true					
+						}
+			},
+			data:function(){
+				return {myitems:this.items};
+			},
+			template:	'<ul class="child">\
+							<slot name="li" :items="myitems"></slot>\
+						</ul>'
+		};
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				items:['小王','小李','小刘','小张','小刚']
+			},
+			components:{
+				'my-component':myComponent,
+				'my-component2':myComponent2
+			}
+		});
+	</script>
+</html>

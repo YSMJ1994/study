@@ -1,19 +1,19 @@
 <html>
 	<head>
-		<title>·Ç¸¸×Ó¼ä×é¼şÍ¨ĞÅ</title>
-		<!-- µ¼ÈëVue2.0-->
+		<title>éçˆ¶å­é—´ç»„ä»¶é€šä¿¡</title>
+		<!-- å¯¼å…¥Vue2.0-->
 		<script src="vue.js"></script>
 	</head>
 	<body>
-		<!-- ViewÊÓÍ¼Õ¹ÏÖ-->
+		<!-- Viewè§†å›¾å±•ç°-->
 		<div id="app">
 			<button-counter1></button-counter1>
 			<button-counter2></button-counter2>
 		</div>
 	</body>
 	<script>
-		//´´½¨¸ùÊµÀıºÍ¾Ö²¿×é¼ş
-		var bus = new Vue();								//ÊÂ¼ş×ÜÏß
+		//åˆ›å»ºæ ¹å®ä¾‹å’Œå±€éƒ¨ç»„ä»¶
+		var bus = new Vue();								//äº‹ä»¶æ€»çº¿
 		var vm = new Vue({
 			el:'#app',
 			components:{
@@ -24,7 +24,7 @@
 							counter:0
 						};
 					},
-					created: function() {					//ÔÚ¸Ãbutton1´´½¨µÄ¹³×ÓÖĞÊ¹ÓÃÊÂ¼ş×ÜÏßµÄ¼àÌıbutton2ÊÂ¼ş
+					created: function() {					//åœ¨è¯¥button1åˆ›å»ºçš„é’©å­ä¸­ä½¿ç”¨äº‹ä»¶æ€»çº¿çš„ç›‘å¬button2äº‹ä»¶
 						bus.$on('button2',function(){
 							this.counter++;
 						}.bind(this));
@@ -32,7 +32,7 @@
 					methods:{
 						childMethod:function() {
 							this.counter++;
-							bus.$emit('button1');			//ÏòÊÂ¼ş×ÜÏß·¢ËÍbutton1ÊÂ¼ş
+							bus.$emit('button1');			//å‘äº‹ä»¶æ€»çº¿å‘é€button1äº‹ä»¶
 						}
 					}
 				},
@@ -43,7 +43,7 @@
 							counter:0
 						};
 					},
-					created: function() {					//ÔÚ¸Ãbutton2´´½¨µÄ¹³×ÓÖĞÊ¹ÓÃÊÂ¼ş×ÜÏßµÄ¼àÌıbutton1ÊÂ¼ş
+					created: function() {					//åœ¨è¯¥button2åˆ›å»ºçš„é’©å­ä¸­ä½¿ç”¨äº‹ä»¶æ€»çº¿çš„ç›‘å¬button1äº‹ä»¶
 						bus.$on('button1',function(){
 							this.counter++;
 						}.bind(this));
@@ -51,7 +51,7 @@
 					methods:{
 						childMethod:function() {
 							this.counter++;
-							bus.$emit('button2');			//ÏòÊÂ¼ş×ÜÏß·¢ËÍbutton2ÊÂ¼ş
+							bus.$emit('button2');			//å‘äº‹ä»¶æ€»çº¿å‘é€button2äº‹ä»¶
 						}
 					}
 				}

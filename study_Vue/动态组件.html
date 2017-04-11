@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>动态组件</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<div>
+				<h1>Hello Vue！</h1>
+				<button @click="setFirst">firstView</button>
+				<button @click="setSecond">firstView</button>
+				<button @click="setThird">firstView</button>
+				<button @click="removeView">firstView</button>
+			</div>
+			<keep-alive>
+				<component :is="currentView"></component>
+			</keep-alive>
+			
+		</div>
+	</body>
+	<script>
+		var myComponent1 = {
+			template:	'<div>\
+							<h2>Hello First!</h2>\
+						</div>'
+		};		
+		var myComponent2 = {
+			template:	'<div>\
+							<h2>Hello Second!</h2>\
+						</div>'
+		};
+		var myComponent3 = {
+			template:	'<div>\
+							<h2>Hello Third!</h2>\
+						</div>'
+		};
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				currentView:''
+			},
+			methods:{
+				setFirst:function(){
+					this.currentView = 'first';
+				},
+				setSecond:function(){
+					this.currentView = 'second';
+				},
+				setThird:function(){
+					this.currentView = 'third';
+				},
+				removeView:function(){
+					this.currentView = '';
+				},
+			},
+			components:{
+				'first':myComponent1,
+				'second':myComponent2,
+				'third':myComponent3
+			}
+		});
+	</script>
+</html>

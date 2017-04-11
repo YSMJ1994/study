@@ -1,19 +1,21 @@
 <html>
 	<head>
-		<title>×Ô¶¨ÒåeventsÊÂ¼ş´«»ØÊı¾İ</title>
-		<!-- µ¼ÈëVue2.0-->
+		<title>è‡ªå®šä¹‰eventsäº‹ä»¶ä¼ å›æ•°æ®</title>
+		<!-- å¯¼å…¥Vue2.0-->
 		<script src="vue.js"></script>
 	</head>
 	<body>
-		<!-- ViewÊÓÍ¼Õ¹ÏÖ-->
+		<!-- Viewè§†å›¾å±•ç°-->
 		<div id="app">
 			<p>{{ total }}</p>
-			<button-counter @child-method="fatherMethod"></button-counter>    <!-- Ê¹ÓÃv-on¼àÌı×ÓÄ£°åµÄchildMethodÊÂ¼ş,´¥·¢fatherMethod()·½·¨-->
 			<button-counter @child-method="fatherMethod"></button-counter>
+			<button-counter @child-method="fatherMethod"></button-counter>
+			<button-counter @click.native="fatherMethod"></button-counter>
+			<!-- åœ¨ä½¿ç”¨å­ç»„ä»¶çš„åœ°æ–¹ä½¿ç”¨v-onç›‘å¬å­æ¨¡æ¿çš„childMethodäº‹ä»¶,è§¦å‘fatherMethod()æ–¹æ³•-->
 		</div>
 	</body>
 	<script>
-		//´´½¨¸ùÊµÀıºÍ¾Ö²¿×é¼ş
+		//åˆ›å»ºæ ¹å®ä¾‹å’Œå±€éƒ¨ç»„ä»¶
 		var vm = new Vue({
 			el:'#app',
 			data:{
@@ -26,7 +28,7 @@
 			},
 			components:{
 				'button-counter':{
-					template:'<button v-on:click="childMethod">{{ counter }}</button>',
+					template:'<button @click="childMethod">{{ counter }}</button>',
 					data:function(){
 						return {
 							counter:0
@@ -35,7 +37,7 @@
 					methods:{
 						childMethod:function() {
 							this.counter+=1;
-							this.$emit('child-method');			//Ïò¸¸Ä£°å·¢ËÍchild-methodÊÂ¼ş
+							this.$emit('child-method');			//å‘çˆ¶æ¨¡æ¿å‘é€child-methodäº‹ä»¶
 						}
 					}
 				}

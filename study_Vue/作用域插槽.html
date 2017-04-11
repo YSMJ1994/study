@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>作用域插槽</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<div class="parent">
+				<my-component>
+					<template scope="props">
+						<span>{{parentData}}</span><br/>
+						<span>{{props.msg}}</span>
+					</template>
+				</my-component>
+			</div>
+		</div>
+	</body>
+	<script>
+		var myComponent = {
+			data:function(){
+				return {childData:'hello from child'};
+			},
+			template:	'<div class="child">\
+							<slot :msg="childData"></slot>\
+						</div>'
+		}
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				parentData:'hello from parent'
+			},
+			components:{
+				'my-component':myComponent
+			}
+		});
+	</script>
+</html>

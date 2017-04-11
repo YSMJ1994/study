@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>非父子间组件通信</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			<button-counter1 ref="button1"></button-counter1>
+			<button-counter2 ref="button2"></button-counter2>
+		</div>
+	</body>
+	<script>
+		//创建根实例和局部组件
+		var bus = new Vue({
+			created:function () {
+				this.$on('button1', this.button2Add);
+				this.$on('button2', this.button1Add);
+			},
+			beforeDestroy:function () {
+				this.$off('button1', this.button2Add);
+				this.$off('button2', this.button1Add);
+			},
+			methods: {
+				button1Add: function () {
+					vm.$refs.button1.addCounter();
+				},
+				button2Add: function (i) {
+					vm.$refs.button2.addCounter();
+				}
+		}
+		});
+		var button1 = {
+			template:'<button @click="childMethod">{{ counter }}</button>',
+			data:function() {
+				return {
+					counter:0
+				};
+			},
+			methods:{
+				childMethod:function() {
+					this.addCounter();
+					bus.$emit('button1');			//向事件总线发送button1事件
+				},
+				addCounter:function() {
+					this.counter++;
+				}
+			}
+		};
+		var button2 = {
+			template:'<button @click="childMethod">{{ counter }}</button>',
+			data:function() {
+				return {
+					counter:0
+				};
+			},
+			methods:{
+				childMethod:function() {
+					this.addCounter();
+					bus.$emit('button2');			//向事件总线发送button2事件
+				},
+				addCounter:function() {
+					this.counter++;
+				}
+			}
+		};
+		var vm = new Vue({
+			el:'#app',
+			components:{
+				'button-counter1':button1,
+				'button-counter2':button2
+			}
+		});
+	</script>
+</html>

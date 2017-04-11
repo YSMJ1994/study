@@ -1,66 +1,66 @@
 <html>
 	<head>
-		<title>PropsÑéÖ¤</title>
-		<!-- µ¼ÈëVue2.0-->
+		<title>PropséªŒè¯</title>
+		<!-- å¯¼å…¥Vue2.0-->
 		<script src="vue.js"></script>
 	</head>
 	<body>
-		<!-- ViewÊÓÍ¼Õ¹ÏÖ-->
+		<!-- Viewè§†å›¾å±•ç°-->
 		<div id="app">
-			<my-component1 :msg="msg"></my-component1><br/>
+			<my-component1 :propmsg="msg"></my-component1><br/>
 		</div>
 	</body>
 	<script>
-		//´´½¨¸ùÊµÀıºÍ¾Ö²¿×é¼ş
+		//åˆ›å»ºæ ¹å®ä¾‹å’Œå±€éƒ¨ç»„ä»¶
 		var vm = new Vue({
 			el:'#app',
 			data:{
-				msg:'    app-         Msg    '
+				msg:'app-Msg'
 			},
 			components:{
 				'my-component1':{
 					props:{
-						msg:{
-							type:Number,						//ÀàĞÍÑéÖ¤String,Number,Boolean,Function,Object,Array
-							default:0,							//Ä¬ÈÏÖµ
-							required:true,						//ÊÇ·ñ±Ø´«
-							validator:function (value) {		//×Ô¶¨ÒåÑéÖ¤º¯Êı
+						propmsg:{
+							type:Number,						//ç±»å‹éªŒè¯String,Number,Boolean,Function,Object,Array
+							default:0,							//é»˜è®¤å€¼
+							required:true,						//æ˜¯å¦å¿…ä¼ 
+							validator:function (value) {		//è‡ªå®šä¹‰éªŒè¯å‡½æ•°
 								return value >= 0
 							}
 						}
 						/*,
-						// »ù´¡ÀàĞÍ¼ì²â £¨`null` ÒâË¼ÊÇÈÎºÎÀàĞÍ¶¼¿ÉÒÔ£©
+						// åŸºç¡€ç±»å‹æ£€æµ‹ ï¼ˆnull æ„æ€æ˜¯ä»»ä½•ç±»å‹éƒ½å¯ä»¥ï¼‰
 						propA: Number,
-						// ¶àÖÖÀàĞÍ
+						// å¤šç§ç±»å‹
 						propB: [String, Number],
-						// ±Ø´«ÇÒÊÇ×Ö·û´®
+						// å¿…ä¼ ä¸”æ˜¯å­—ç¬¦ä¸²
 						propC: {
 						  type: String,
 						  required: false
 						},
-						// Êı×Ö£¬ÓĞÄ¬ÈÏÖµ
+						// æ•°å­—ï¼Œæœ‰é»˜è®¤å€¼
 						propD: {
 						  type: Number,
 						  default: 100
 						},
-						// Êı×é£¯¶ÔÏóµÄÄ¬ÈÏÖµÓ¦µ±ÓÉÒ»¸ö¹¤³§º¯Êı·µ»Ø
+						// æ•°ç»„ï¼å¯¹è±¡çš„é»˜è®¤å€¼åº”å½“ç”±ä¸€ä¸ªå·¥å‚å‡½æ•°è¿”å›
 						propE: {
 						  type: Object,
 						  default: function () {
 							return { message: 'hello' }
 						  }
 						},
-						// ×Ô¶¨ÒåÑéÖ¤º¯Êı
+						// è‡ªå®šä¹‰éªŒè¯å‡½æ•°
 						propF: {
 						  validator: function (value) {
 							return value > 10
 						  }
 						}*/
 					},
-					template:'<span :id="handle1()">--------{{msg}}---------{{spanMsg}}</span>',
+					template:'<span :id="handle1()">--------{{propmsg}}---------{{spanMsg}}</span>',
 					data:function(){
 						return {spanMsg:'span-Msg',
-								newmsg:this.msg
+								newmsg:this.propmsg
 						};
 					},
 					methods:{
