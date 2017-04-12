@@ -9,7 +9,6 @@
 		<div id="app">
 			<my-component1 :msg="msg121"></my-component1><br/>
 			<input type="text" v-model="msg121"/>
-			<input type="text" v-model="msg121"/>
 		</div>
 	</body>
 	<script>
@@ -17,21 +16,25 @@
 		var vm = new Vue({
 			el:'#app',
 			data:{
-				msg121:'    app-         Msg    '
+				msg121:'app-Msg'
 			},
 			components:{
 				'my-component1':{
 					props:['msg'],
-					template:'<span :id="handle1()">--------{{msg}}---------{{spanMsg}}</span>',
+					template:	'<span>--------{{msg}}---------{{spanMsg}}--------{{newmsg}}\
+								<button @click="modifyProp">modifyProp</button>\
+								<button @click="modifyPrivate">modifyPrivate</button></span>',
 					data:function(){
 						return {spanMsg:'span-Msg',
 								newmsg:this.msg
 						};
 					},
 					methods:{
-						handle1:function() {
-							this.msg="111";
-							return this.newmsg;
+						modifyProp:function() {
+							this.msg = 'modify';
+						},
+						modifyPrivate:function() {
+							this.newmsg = 'modify';
 						}
 					}
 				}

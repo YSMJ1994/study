@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>camelCased转换示例</title>
+		<!-- 导入Vue2.0-->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!-- View视图展现-->
+		<div id="app">
+			1-<my-conponent></my-conponent><br/>
+			2-<myConponent></myConponent>
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			components:{
+				'myConponent':{
+					template:'<h1>我的自定义组件</h1>'
+				}
+			}
+		});
+	</script>
+</html>

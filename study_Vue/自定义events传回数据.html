@@ -8,7 +8,7 @@
 		<!-- View视图展现-->
 		<div id="app">
 			<p>{{ total }}</p>
-			<button-counter @child-method="fatherMethod"></button-counter>
+			<button-counter @child-method12312312312="fatherMethod"></button-counter>
 			<button-counter @child-method="fatherMethod"></button-counter>
 			<button-counter @click.native="fatherMethod"></button-counter>
 			<!-- 在使用子组件的地方使用v-on监听子模板的childMethod事件,触发fatherMethod()方法-->
@@ -37,7 +37,7 @@
 					methods:{
 						childMethod:function() {
 							this.counter+=1;
-							this.$emit('child-method');			//向父模板发送child-method事件
+							this.$emit('child-method12312312312');			//向父模板发送child-method事件
 						}
 					}
 				}

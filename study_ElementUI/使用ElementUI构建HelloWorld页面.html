@@ -1,7 +1,7 @@
 <html>
 	<head>
-		<title>ä½¿ç”¨ElementUIæž„å»ºHelloWorldé¡µé¢</title>
-		<!-- å¼•å…¥æ ·å¼ -->
+		<title>Ê¹ÓÃElementUI¹¹½¨HelloWorldÒ³Ãæ</title>
+		<!-- ÒýÈëÑùÊ½ -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
 		<style>
 			.el-row {
@@ -24,9 +24,9 @@
 	</head>
 	<body>
 		<div id="app">
-			<el-button @click="visible = true">æŒ‰é’®</el-button>
+			<el-button @click="visible = true">°´Å¥</el-button>
 			<el-dialog v-model="visible" title="Hello world">
-				<p>æ¬¢è¿Žä½¿ç”¨ Element</p>
+				<p>»¶Ó­Ê¹ÓÃ Element</p>
 			</el-dialog>
 			<br/>
 			<el-row>
@@ -36,17 +36,17 @@
 			<el-button style="padding:10px 10px;border:0px;"><i class="el-icon-share"></i></i></el-button>
 			<el-button style="padding:10px 10px;"><i class="el-icon-delete"></i></el-button>	
 			<br/><br/>
-			<el-button type="primary" icon="search">æœç´¢</el-button><br/><br/>
-			<el-radio class="radio" v-model="radio" label="1">å¤‡é€‰é¡¹</el-radio>
-			<el-radio class="radio" v-model="radio" label="2">å¤‡é€‰é¡¹</el-radio>
-			<el-checkbox v-model="checked">å¤‡é€‰é¡¹</el-checkbox><br/><br/>
-			<el-input v-model="input" placeholder="è¯·è¾“å…¥å†…å®¹" style="width:30%;"></el-input>
+			<el-button type="primary" icon="search">ËÑË÷</el-button><br/><br/>
+			<el-radio class="radio" v-model="radio" label="1">±¸Ñ¡Ïî</el-radio>
+			<el-radio class="radio" v-model="radio" label="2">±¸Ñ¡Ïî</el-radio>
+			<el-checkbox v-model="checked">±¸Ñ¡Ïî</el-checkbox><br/><br/>
+			<el-input v-model="input" placeholder="ÇëÊäÈëÄÚÈÝ" style="width:30%;"></el-input>
 		</div>
 		
 	</body>
-	<!--  å…ˆå¼•å…¥Vue2.0-->
+	<!--  ÏÈÒýÈëVue2.0-->
 	<script src="vue.js"></script>
-	<!-- å¼•å…¥ç»„ä»¶åº“ -->
+	<!-- ÒýÈë×é¼þ¿â -->
 	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 	<script>
 		var vm = new Vue({
